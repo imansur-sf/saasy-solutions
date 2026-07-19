@@ -296,24 +296,29 @@ main {
 .armory-header {
   display: flex;
   gap: 2rem;
-  align-items: stretch;
+  align-items: flex-start;
   margin-bottom: 1.75rem;
 }
 
 .armory-header-text {
   flex: 1;
   min-width: 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.5rem;
-  /* keep title/lede/tabs anchored to the poster's top and bottom
-     so there's no empty pocket below the buttons */
 }
 
-.armory-header-text .section-title { margin-bottom: 0.5rem; }
-.armory-header-text .section-lede { margin-bottom: 0; }
+.armory-header-text .section-title { margin: 0 0 0.75rem; }
+.armory-header-text .section-lede { margin: 0 0 0.9rem; }
+.armory-header-text .section-lede:last-of-type { margin-bottom: 1.25rem; }
 .armory-header-text .category-tabs { margin-bottom: 0; }
+
+.armory-blurb {
+  font-size: 1.15rem;
+  line-height: 1.5;
+}
+.armory-blurb strong {
+  color: var(--torch-orange);
+  font-weight: normal;
+  text-shadow: 1px 1px 0 var(--border-dark);
+}
 
 .armory-poster {
   height: 240px;

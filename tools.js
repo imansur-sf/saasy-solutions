@@ -80,12 +80,12 @@ Built for: SEs who want to batch-update their Salesforce records after a week of
   },
   {
     category: 'slackbot',
-    name: 'CBS Holodeck Builder',
+    name: 'CBS Holodeck Creator',
     icon: '🔔',
-    desc: `CBS Holodeck Builder is a Slackbot skill that helps AEs & Solution Engineers build a complete, story-driven pre-sales customer deck — fast. It runs a short intake interview (customer name, audience, meeting type, key pain points, products), then generates all slide content mapped to the CBS Presentation Design Toolkit: headlines, body copy, speaker notes, and AI-generated visuals. Output is delivered as both a Slack Canvas (your speaker prep reference) and a live Google Slides deck built directly from the CBS brand template — ready to present.
+    desc: `CBS Holodeck Creator is a Slackbot skill that helps AEs & Solution Engineers build a complete, story-driven pre-sales customer deck — fast. It runs a short intake interview (customer name, audience, meeting type, key pain points, products), then generates all slide content mapped to the CBS Presentation Design Toolkit: headlines, body copy, speaker notes, and AI-generated visuals. Output is delivered as both a Slack Canvas (your speaker prep reference) and a Powerpoint file that can be imported into Google Slides to be ready to present.
 
 Works standalone, and gets even richer when connected to Salesforce (pulls account/opp data), Slack (surfaces discovery insights), and web search (recent news and "Why Now" angles).`,
-    url: 'https://salesforce.enterprise.slack.com/docs/TECBHJS2W/F0ATPJYKMC2'
+    url: 'https://salesforce.enterprise.slack.com/docs/TECBHJS2W/F0BHUDV0N3Z'
   },
 
   // ------- Generators (hosted on GitHub) -------
@@ -105,21 +105,6 @@ How it works:
 Perfect for sales teams and SEs looking to assemble rapid, highly tailored client demonstrations.`,
     url: 'https://imansur-sf.github.io/loyalty-portal-generator/'
   },
-  {
-    category: 'generators',
-    name: 'GitHub Repo Two',
-    icon: '◆',
-    desc: 'Another GitHub project placeholder.',
-    url: '#'
-  },
-  {
-    category: 'generators',
-    name: 'GitHub Repo Three',
-    icon: '⚔',
-    desc: 'Placeholder GitHub repo #3.',
-    url: '#'
-  },
-
   // ------- Holodecks -------
   {
     category: 'holodeck',
