@@ -296,7 +296,7 @@ main {
 .armory-header {
   display: flex;
   gap: 2rem;
-  align-items: flex-start;
+  align-items: center;
   margin-bottom: 1.75rem;
 }
 
@@ -314,20 +314,53 @@ main {
   font-size: 1.15rem;
   line-height: 1.5;
 }
-.armory-blurb strong {
+.armory-blurb strong,
+.armory-list strong {
   color: var(--torch-orange);
   font-weight: normal;
   text-shadow: 1px 1px 0 var(--border-dark);
 }
 
+.armory-list {
+  list-style: none;
+  margin: 0 0 1rem;
+  padding: 0;
+  font-size: 1.15rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+.armory-list li {
+  padding: 0.3rem 0 0.3rem 1.5rem;
+  position: relative;
+}
+.armory-list li::before {
+  content: '\25B8';
+  position: absolute;
+  left: 0;
+  color: var(--torch-orange);
+  text-shadow: 1px 1px 0 var(--border-dark);
+}
+
+.armory-quote {
+  margin: 0 0 1.25rem;
+  padding: 0.75rem 1rem;
+  border-left: 3px solid var(--blood-red);
+  background: rgba(0, 0, 0, 0.28);
+  font-family: var(--body-font);
+  font-style: italic;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: var(--parchment);
+}
+
 .armory-poster {
-  height: 240px;
+  height: 400px;
   width: auto;
   flex-shrink: 0;
   display: block;
   border: 3px solid var(--torch-orange);
   box-shadow: 0 0 0 2px var(--border-dark),
-              0 0 18px rgba(255,107,26,0.5);
+              0 0 22px rgba(255,107,26,0.55);
 }
 
 .category-tabs {
@@ -532,5 +565,5 @@ main {
   .hero-logo { width: 100%; }
   .section-title { font-size: 0.9rem; }
   .armory-header { flex-direction: column; align-items: center; }
-  .armory-poster { height: 200px; }
+  .armory-poster { height: 320px; }
 }

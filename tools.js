@@ -123,16 +123,16 @@ The proposed solutions include:
   },
   {
     category: 'holodeck',
-    name: 'Holodeck Two',
+    name: 'Express Wash Concepts',
     icon: '🎮',
-    desc: 'Another Holodeck placeholder. Update text and URL when ready.',
-    url: '#'
+    desc: `The presentation details a strategic partnership between Express Wash Concepts and Salesforce. It aims to drive business growth through hyper-personalized guest experiences and operational efficiency. The proposed solution leverages the Salesforce Customer 360 platform to unify customer data. Implementation of Agentic AI is suggested to automate support and optimize technician scheduling.`,
+    url: 'https://docs.google.com/presentation/d/10EuI-i1995x7ocOTSbMinePV3ZfhZqlCg-XaOIMuExs/edit?slide=id.g3d4db0fb3c1_4_430#slide=id.g3d4db0fb3c1_4_430'
   },
   {
     category: 'holodeck',
-    name: 'Holodeck Three',
+    name: 'Unique Vacations',
     icon: '🛸',
-    desc: 'Placeholder Holodeck #3.',
-    url: '#'
+    desc: `This presentation details a strategic partnership between Unique Vacations and Salesforce, aimed at addressing the hospitality industry's need for hyper-personalized guest experiences and operational efficiency. The proposed solution leverages a unified Guest 360 platform — integrating Sales, Service, and Marketing Cloud — to connect customer data, automate journeys, and use AI-driven insights to increase direct bookings and drive long-term guest loyalty.`,
+    url: 'https://docs.google.com/presentation/d/1t772LB33wqYr75RtFpUXhY4OrNjs6W43PCcTQ4p_qFQ/edit?slide=id.g2a7040b4089_6_4#slide=id.g2a7040b4089_6_4'
   }
 ];
