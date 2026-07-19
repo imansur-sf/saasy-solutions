@@ -105,6 +105,13 @@ How it works:
 Perfect for sales teams and SEs looking to assemble rapid, highly tailored client demonstrations.`,
     url: 'https://imansur-sf.github.io/loyalty-portal-generator/'
   },
+  {
+    category: 'generators',
+    name: 'Unified Profile Generator',
+    icon: '◆',
+    desc: `The Unified Profile Generator is an interactive mockup tool designed to simulate a customized 360-degree customer view for Salesforce Data Cloud demonstrations. Users can instantly kick off the process by pasting a company's URL, allowing the built-in AI to automatically extract brand identity, logos, and color tokens. Alternatively, a 7-step configuration wizard provides complete control to manually refine the design, industry verticals, and custom customer data attributes. As you adjust these settings, a dynamic live preview panel updates in real time to display a highly realistic mock customer profile dashboard. This preview cleanly visualizes unified customer insights, including cross-platform membership data, engagement timelines, learning affinities, and predictive Einstein Recommendations.`,
+    url: 'https://imansur-sf.github.io/unified-profile-generator/'
+  },
   // ------- Holodecks -------
   {
     category: 'holodeck',
@@ -134,5 +141,12 @@ The proposed solutions include:
     icon: '🛸',
     desc: `This presentation details a strategic partnership between Unique Vacations and Salesforce, aimed at addressing the hospitality industry's need for hyper-personalized guest experiences and operational efficiency. The proposed solution leverages a unified Guest 360 platform — integrating Sales, Service, and Marketing Cloud — to connect customer data, automate journeys, and use AI-driven insights to increase direct bookings and drive long-term guest loyalty.`,
     url: 'https://docs.google.com/presentation/d/1t772LB33wqYr75RtFpUXhY4OrNjs6W43PCcTQ4p_qFQ/edit?slide=id.g2a7040b4089_6_4#slide=id.g2a7040b4089_6_4'
+  },
+  {
+    category: 'holodeck',
+    name: 'Hanson Windows',
+    icon: '🪟',
+    desc: `Hansons faces significant challenges with fragmented systems, manual workflows, and data silos that hinder their ability to automate touchpoints and unify customer experiences across the sales funnel. To resolve these, they are implementing the Salesforce platform to establish a single source of truth, utilize AI-driven automation for lead prioritization and customer service, and deliver personalized, cross-channel engagement to drive revenue growth.`,
+    url: 'https://docs.google.com/presentation/d/1YIG2NFQYegoS3Vh82FWqsV7-4bXu4yvOgyCSzuYuYpo/edit?slide=id.g3b0cca1f6d0_62_37#slide=id.g3b0cca1f6d0_62_37'
   }
 ];
