@@ -1,0 +1,531 @@
+/* ---------- 8-bit theme tokens ---------- */
+:root {
+  --stone-dark: #1a1c22;
+  --stone-mid: #2a2d36;
+  --stone-light: #3d4150;
+  --torch-orange: #ff6b1a;
+  --torch-orange-bright: #ff8c3f;
+  --torch-yellow: #ffcc4a;
+  --parchment: #f4e4bc;
+  --blood-red: #c53030;
+  --mana-blue: #4a89dc;
+  --text-primary: #f4e4bc;
+  --text-muted: #b8a878;
+  --border-dark: #0a0b0f;
+  --border-light: #6b6f7d;
+
+  --pixel-font: 'Press Start 2P', 'Courier New', monospace;
+  --body-font: 'VT323', 'Courier New', monospace;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  min-height: 100%;
+  font-family: var(--body-font);
+  color: var(--text-primary);
+  background: var(--stone-dark);
+  image-rendering: pixelated;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+}
+
+body {
+  background-image: url('assets/background.png');
+  background-size: cover;
+  background-position: center top;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  position: relative;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10,11,15,0.30) 0%, rgba(10,11,15,0.45) 100%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* subtle CRT scanlines */
+.scanlines {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    to bottom,
+    rgba(0,0,0,0) 0px,
+    rgba(0,0,0,0) 2px,
+    rgba(0,0,0,0.08) 3px,
+    rgba(0,0,0,0.08) 3px
+  );
+  mix-blend-mode: multiply;
+}
+
+main, .site-header, .site-footer { position: relative; z-index: 1; }
+
+/* ---------- Header / Nav ---------- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 2rem;
+  /* dark tint layered over the same fixed dungeon backdrop as the body,
+     so the header looks like the surrounding art but is opaque enough
+     to hide scrolling content behind it */
+  background-image:
+    linear-gradient(180deg, rgba(10,11,15,0.30) 0%, rgba(10,11,15,0.45) 100%),
+    url('assets/background.png');
+  background-size: auto, cover;
+  background-position: 0 0, center top;
+  background-attachment: fixed, fixed;
+  background-repeat: no-repeat, no-repeat;
+  border-bottom: 4px solid var(--blood-red);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+}
+
+.brand-logo {
+  width: 192px;
+  height: 192px;
+  display: block;
+  border: 4px solid var(--torch-orange);
+  background: var(--stone-dark);
+  box-shadow: 0 0 0 3px var(--border-dark), 0 0 20px rgba(255,107,26,0.55);
+}
+
+
+.brand-title {
+  font-family: var(--pixel-font);
+  font-size: 1rem;
+  color: var(--torch-orange);
+  margin: 0;
+  text-shadow: 2px 2px 0 var(--border-dark);
+  letter-spacing: 0.05em;
+}
+
+.site-nav {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.nav-link {
+  font-family: var(--pixel-font);
+  font-size: 0.7rem;
+  color: var(--parchment);
+  text-decoration: none;
+  padding: 0.75rem 1rem;
+  background: var(--stone-mid);
+  border: 3px solid var(--border-light);
+  box-shadow: inset 2px 2px 0 rgba(255,255,255,0.1),
+              inset -2px -2px 0 rgba(0,0,0,0.4),
+              3px 3px 0 var(--border-dark);
+  transition: transform 0.05s, box-shadow 0.05s, color 0.15s, border-color 0.15s;
+  cursor: pointer;
+}
+
+.nav-link:hover {
+  color: var(--torch-yellow);
+  border-color: var(--torch-orange);
+}
+
+.nav-link:active,
+.nav-link.active {
+  color: var(--torch-orange);
+  border-color: var(--torch-orange);
+  transform: translate(2px, 2px);
+  box-shadow: inset 2px 2px 0 rgba(0,0,0,0.4),
+              inset -2px -2px 0 rgba(255,255,255,0.1),
+              1px 1px 0 var(--border-dark);
+}
+
+/* ---------- Sections & Panels ---------- */
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 250px 1.5rem 4rem;
+}
+
+.section {
+  margin: 2rem 0;
+  scroll-margin-top: 250px;
+}
+
+.panel {
+  background: rgba(20, 22, 28, 0.92);
+  border: 4px solid var(--border-light);
+  padding: 2rem;
+  position: relative;
+  box-shadow:
+    inset 3px 3px 0 rgba(255,255,255,0.08),
+    inset -3px -3px 0 rgba(0,0,0,0.5),
+    6px 6px 0 var(--border-dark);
+}
+
+/* corner rivets */
+.panel::before,
+.panel::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--torch-orange);
+  border: 2px solid var(--border-dark);
+}
+.panel::before { top: 8px; left: 8px; }
+.panel::after { top: 8px; right: 8px; }
+
+.section-title {
+  font-family: var(--pixel-font);
+  font-size: 1.15rem;
+  color: var(--torch-orange);
+  text-shadow: 3px 3px 0 var(--border-dark);
+  margin: 0 0 1rem;
+  letter-spacing: 0.03em;
+}
+
+.section-lede {
+  font-size: 1.35rem;
+  color: var(--text-muted);
+  margin: 0 0 1.75rem;
+}
+
+/* ---------- Hero ---------- */
+.panel-hero {
+  text-align: center;
+  padding: 3rem 2rem;
+}
+
+.hero-logo {
+  width: min(720px, 90%);
+  height: auto;
+  margin: 0.5rem auto 1.5rem;
+  display: block;
+  /* soft radial fade so the battle gif's rectangular edge
+     melts into the panel background */
+  -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 95%);
+  mask-image: radial-gradient(ellipse at center, black 55%, transparent 95%);
+}
+
+.hero-title {
+  font-family: var(--pixel-font);
+  font-size: 1.6rem;
+  color: var(--parchment);
+  text-shadow: 3px 3px 0 var(--border-dark);
+  margin: 0 0 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  color: var(--text-muted);
+  margin: 0 0 2rem;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ---------- Buttons ---------- */
+.pixel-btn {
+  display: inline-block;
+  font-family: var(--pixel-font);
+  font-size: 0.75rem;
+  color: var(--border-dark);
+  background: var(--torch-orange);
+  padding: 0.9rem 1.25rem;
+  text-decoration: none;
+  border: 3px solid var(--border-dark);
+  box-shadow: inset 2px 2px 0 var(--torch-orange-bright),
+              inset -2px -2px 0 rgba(0,0,0,0.35),
+              4px 4px 0 var(--border-dark);
+  cursor: pointer;
+  transition: transform 0.05s, box-shadow 0.05s;
+  letter-spacing: 0.05em;
+}
+
+.pixel-btn:hover {
+  background: var(--torch-orange-bright);
+}
+
+.pixel-btn:active {
+  transform: translate(3px, 3px);
+  box-shadow: inset 2px 2px 0 rgba(0,0,0,0.35),
+              inset -2px -2px 0 var(--torch-orange-bright),
+              1px 1px 0 var(--border-dark);
+}
+
+.pixel-btn-ghost {
+  background: var(--stone-mid);
+  color: var(--parchment);
+  box-shadow: inset 2px 2px 0 rgba(255,255,255,0.1),
+              inset -2px -2px 0 rgba(0,0,0,0.4),
+              4px 4px 0 var(--border-dark);
+}
+
+.pixel-btn-ghost:hover {
+  background: var(--stone-light);
+  color: var(--torch-yellow);
+}
+
+.pixel-btn-sm {
+  font-size: 0.65rem;
+  padding: 0.6rem 0.9rem;
+}
+
+/* ---------- Tools ---------- */
+.armory-header {
+  display: flex;
+  gap: 2rem;
+  align-items: stretch;
+  margin-bottom: 1.75rem;
+}
+
+.armory-header-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 0.5rem;
+  /* keep title/lede/tabs anchored to the poster's top and bottom
+     so there's no empty pocket below the buttons */
+}
+
+.armory-header-text .section-title { margin-bottom: 0.5rem; }
+.armory-header-text .section-lede { margin-bottom: 0; }
+.armory-header-text .category-tabs { margin-bottom: 0; }
+
+.armory-poster {
+  height: 240px;
+  width: auto;
+  flex-shrink: 0;
+  display: block;
+  border: 3px solid var(--torch-orange);
+  box-shadow: 0 0 0 2px var(--border-dark),
+              0 0 18px rgba(255,107,26,0.5);
+}
+
+.category-tabs {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-bottom: 1.5rem;
+}
+
+.tab-btn {
+  font-family: var(--pixel-font);
+  font-size: 0.65rem;
+  padding: 0.65rem 0.9rem;
+  background: var(--stone-mid);
+  color: var(--parchment);
+  border: 3px solid var(--border-light);
+  cursor: pointer;
+  box-shadow: 3px 3px 0 var(--border-dark);
+  transition: transform 0.05s, box-shadow 0.05s, color 0.15s, border-color 0.15s;
+}
+
+.tab-btn:hover {
+  color: var(--torch-yellow);
+}
+
+.tab-btn.active {
+  color: var(--torch-orange);
+  border-color: var(--torch-orange);
+  background: var(--stone-dark);
+}
+
+.tab-btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--border-dark);
+}
+
+.tool-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.tool-card {
+  background: linear-gradient(180deg, var(--stone-mid) 0%, var(--stone-dark) 100%);
+  border: 3px solid var(--border-light);
+  padding: 1.25rem;
+  height: 360px;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  box-shadow: inset 2px 2px 0 rgba(255,255,255,0.08),
+              inset -2px -2px 0 rgba(0,0,0,0.5),
+              4px 4px 0 var(--border-dark);
+  transition: transform 0.1s, border-color 0.15s, box-shadow 0.1s;
+}
+
+.tool-card:hover {
+  border-color: var(--torch-orange);
+  transform: translate(-2px, -2px);
+  box-shadow: inset 2px 2px 0 rgba(255,255,255,0.08),
+              inset -2px -2px 0 rgba(0,0,0,0.5),
+              6px 6px 0 var(--border-dark);
+}
+
+.tool-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.tool-badge {
+  font-family: var(--pixel-font);
+  font-size: 0.5rem;
+  padding: 0.3rem 0.5rem;
+  border: 2px solid var(--border-dark);
+  color: var(--border-dark);
+  letter-spacing: 0.05em;
+}
+
+.tool-badge.meshmesh { background: var(--mana-blue); color: #fff; }
+.tool-badge.slackbot { background: var(--torch-yellow); }
+.tool-badge.generators { background: var(--parchment); }
+.tool-badge.holodeck { background: #9b59b6; color: #fff; }
+
+.tool-icon {
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.tool-name {
+  font-family: var(--pixel-font);
+  font-size: 0.85rem;
+  color: var(--torch-orange);
+  margin: 0.25rem 0 0;
+  text-shadow: 2px 2px 0 var(--border-dark);
+  line-height: 1.4;
+}
+
+.tool-desc {
+  font-size: 1.15rem;
+  color: var(--text-muted);
+  margin: 0;
+  flex: 1;
+  min-height: 0;
+  line-height: 1.4;
+  white-space: pre-line;
+  overflow-y: auto;
+  padding-right: 0.35rem;
+  /* thin 8-bit scrollbar for long descriptions */
+  scrollbar-width: thin;
+  scrollbar-color: var(--torch-orange) var(--stone-dark);
+}
+
+.tool-desc::-webkit-scrollbar { width: 8px; }
+.tool-desc::-webkit-scrollbar-track {
+  background: var(--stone-dark);
+  border: 1px solid var(--border-dark);
+}
+.tool-desc::-webkit-scrollbar-thumb {
+  background: var(--torch-orange);
+  border: 1px solid var(--border-dark);
+}
+.tool-desc::-webkit-scrollbar-thumb:hover {
+  background: var(--torch-orange-bright);
+}
+
+.tool-link {
+  align-self: flex-start;
+  margin-top: 0.5rem;
+}
+
+/* ---------- About ---------- */
+.about-content {
+  display: flex;
+  gap: 2rem;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.about-avatar {
+  width: 160px;
+  height: 160px;
+  border: 4px solid var(--torch-orange);
+  box-shadow: 0 0 0 3px var(--border-dark),
+              0 0 20px rgba(255,107,26,0.5);
+  flex-shrink: 0;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 260px;
+  font-size: 1.35rem;
+  line-height: 1.5;
+  color: var(--text-primary);
+}
+
+.about-text p { margin: 0 0 1rem; }
+
+.tenure-count {
+  font-family: var(--pixel-font);
+  font-size: 0.9em;
+  color: var(--torch-orange);
+  text-shadow: 1px 1px 0 var(--border-dark);
+  padding: 0 0.1em;
+}
+
+.about-links {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  text-align: center;
+  padding: 1.5rem;
+  border-top: 3px solid var(--torch-orange);
+  background: rgba(10, 11, 15, 0.85);
+  font-family: var(--pixel-font);
+  font-size: 0.65rem;
+  color: var(--text-muted);
+  letter-spacing: 0.05em;
+  margin-top: 2rem;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 640px) {
+  .site-header {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .brand-logo { width: 120px; height: 120px; }
+  .nav-link { font-size: 0.55rem; padding: 0.6rem 0.75rem; }
+  main { padding-top: 220px; }
+  .section { scroll-margin-top: 220px; }
+  .panel { padding: 1.25rem; }
+  .hero-title { font-size: 1.1rem; }
+  .hero-logo { width: 100%; }
+  .section-title { font-size: 0.9rem; }
+  .armory-header { flex-direction: column; align-items: center; }
+  .armory-poster { height: 200px; }
+}

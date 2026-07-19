@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>SaaSy Solutions</title>
+<link rel="icon" type="image/gif" href="assets/logo.gif" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="scanlines"></div>
+
+  <header class="site-header">
+    <div class="brand">
+      <a href="#home" aria-label="SaaSy Solutions home">
+        <img src="assets/logo.gif" alt="SaaSy Solutions" class="brand-logo" />
+      </a>
+    </div>
+    <nav class="site-nav" aria-label="Primary">
+      <a href="#home" class="nav-link" data-section="home">Home</a>
+      <a href="#tools" class="nav-link" data-section="tools">Tools</a>
+      <a href="#about" class="nav-link" data-section="about">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section id="home" class="section section-home">
+      <div class="panel panel-hero">
+        <img src="assets/battle.gif" alt="" aria-hidden="true" class="hero-logo" />
+        <h2 class="hero-title">Come with me to the Dark Side of the (sales)Force</h2>
+        <p class="hero-subtitle">A vault of tools forged for MeshMesh, Slack, and Generators (hosted on GitHub).</p>
+        <div class="hero-actions">
+          <a href="#tools" class="pixel-btn">Enter the Armory &raquo;</a>
+          <a href="#about" class="pixel-btn pixel-btn-ghost">About the Sith Lord</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="tools" class="section section-tools">
+      <div class="panel">
+        <div class="armory-header">
+          <img src="assets/poster.png" alt="SaaSy Solutions" class="armory-poster" />
+          <div class="armory-header-text">
+            <h2 class="section-title">&#9876; The Armory</h2>
+            <p class="section-lede">Pick your weapon. Tools built and deployed for the guild.</p>
+
+            <div class="category-tabs" role="tablist">
+              <button class="tab-btn active" data-filter="all">All</button>
+              <button class="tab-btn" data-filter="meshmesh">MeshMesh</button>
+              <button class="tab-btn" data-filter="slackbot">Slackbot Skills</button>
+              <button class="tab-btn" data-filter="generators">Generators</button>
+              <button class="tab-btn" data-filter="holodeck">Holodecks</button>
+            </div>
+          </div>
+        </div>
+
+        <div id="tool-grid" class="tool-grid"></div>
+      </div>
+    </section>
+
+    <section id="about" class="section section-about">
+      <div class="panel">
+        <h2 class="section-title">&#9670; About the Sith Lord</h2>
+        <div class="about-content">
+          <img src="assets/logo.gif" alt="" class="about-avatar" aria-hidden="true" />
+          <div class="about-text">
+            <p>Imran Mansur, also known to some as Slim, Vape Genie, or the guy that&rsquo;s always got a case of the Mondays, is a Lead Account Solutions Engineer that currently supports CBS CMCL under Ilya Pevzner. Having been a Salesforce employee for <span id="sf-tenure-days" class="tenure-count">&hellip;</span> days, he&rsquo;s kissed alot of frogs, serving in various roles such as SDR, Core AE, and Core SE. When he&rsquo;s not being sassy, Imran likes to hang out with his ragdoll kitten, teaching her tricks such as sign language commands to sit, shake, and get him a glass of wine (still working on that last one).</p>
+            <p class="about-links">
+              <a href="https://github.com/imansur-sf" target="_blank" rel="noopener" class="pixel-btn pixel-btn-sm">GitHub</a>
+              <a href="https://www.linkedin.com/in/imansur/" target="_blank" rel="noopener" class="pixel-btn pixel-btn-sm">LinkedIn</a>
+              <a href="https://salesforce.enterprise.slack.com/team/WK7DK2NFJ" target="_blank" rel="noopener" class="pixel-btn pixel-btn-sm">Contact</a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; <span id="year"></span> SaaSy Solutions &mdash; Powered by Imran Mansur</p>
+  </footer>
+
+  <script src="tools.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
