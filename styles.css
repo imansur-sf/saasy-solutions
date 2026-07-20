@@ -226,11 +226,34 @@ main {
 
 .hero-title {
   font-family: var(--pixel-font);
-  font-size: 1.6rem;
+  font-size: 1.35rem;
   color: var(--parchment);
   text-shadow: 3px 3px 0 var(--border-dark);
   margin: 0 0 1rem;
 }
+
+.hero-line {
+  display: block;
+  margin: 0.35em 0;
+}
+
+.hero-accent {
+  display: inline-block;
+  font-family: 'Wallpoet', sans-serif;
+  font-size: 1.45em;
+  letter-spacing: 0.02em;
+  vertical-align: 0.07em;
+  line-height: 1;
+  padding: 0 0.05em;
+  text-shadow: 3px 3px 0 var(--border-dark);
+}
+/* the sf-force line is a block by itself — inline-block/vertical-align
+   don't apply, so reset for that context */
+.hero-line.hero-accent {
+  vertical-align: baseline;
+}
+.hero-accent.dark-side { color: #C52F2F; }
+.hero-accent.sf-force  { color: #0B9DDA; }
 
 .hero-subtitle {
   font-size: 1.5rem;
