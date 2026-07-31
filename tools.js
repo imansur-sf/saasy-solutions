@@ -103,7 +103,7 @@ How it works:
 • Real-Time Live Preview: A side-by-side interactive mock-up updates instantly as changes are made, showcasing exactly what the final consumer-facing loyalty experience will look like.
 
 Perfect for sales teams and SEs looking to assemble rapid, highly tailored client demonstrations.`,
-    url: 'https://imansur-sf.github.io/loyalty-portal-generator/'
+    url: 'https://sassysolutions-loyaltygen-7922fe2e6c27.azalea-virginia.herokuapp.com/'
   },
   {
     category: 'generators',
