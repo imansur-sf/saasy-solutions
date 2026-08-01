@@ -78,15 +78,6 @@ Key details:
 Built for: SEs who want to batch-update their Salesforce records after a week of calls, without doing it field by field.`,
     url: 'https://salesforce.enterprise.slack.com/docs/TECBHJS2W/F0AU51AQQU9'
   },
-  {
-    category: 'slackbot',
-    name: 'CBS Holodeck Creator',
-    icon: '🔔',
-    desc: `CBS Holodeck Creator is a Slackbot skill that helps AEs & Solution Engineers build a complete, story-driven pre-sales customer deck — fast. It runs a short intake interview (customer name, audience, meeting type, key pain points, products), then generates all slide content mapped to the CBS Presentation Design Toolkit: headlines, body copy, speaker notes, and AI-generated visuals. Output is delivered as both a Slack Canvas (your speaker prep reference) and a Powerpoint file that can be imported into Google Slides to be ready to present.
-
-Works standalone, and gets even richer when connected to Salesforce (pulls account/opp data), Slack (surfaces discovery insights), and web search (recent news and "Why Now" angles).`,
-    url: 'https://salesforce.enterprise.slack.com/docs/TECBHJS2W/F0BHUDV0N3Z'
-  },
 
   // ------- Generators (hosted on GitHub) -------
   {
@@ -111,6 +102,13 @@ Perfect for sales teams and SEs looking to assemble rapid, highly tailored clien
     icon: '◆',
     desc: `The Unified Profile Generator is an interactive mockup tool designed to simulate a customized 360-degree customer view for Salesforce Data Cloud demonstrations. Users can instantly kick off the process by pasting a company's URL, allowing the built-in AI to automatically extract brand identity, logos, and color tokens. Alternatively, a 7-step configuration wizard provides complete control to manually refine the design, industry verticals, and custom customer data attributes. As you adjust these settings, a dynamic live preview panel updates in real time to display a highly realistic mock customer profile dashboard. This preview cleanly visualizes unified customer insights, including cross-platform membership data, engagement timelines, learning affinities, and predictive Einstein Recommendations.`,
     url: 'http://sassysolutions-unified-pro-gen-09e8f3d71dc2.pear-virginia.herokuapp.com/'
+  },
+  {
+    category: 'generators',
+    name: 'Interactive Customer Presentations',
+    icon: '▶',
+    desc: `This page features Interactive Customer Presentations, an AI-guided deck creation platform that walks sales and strategy teams through a structured 16-step interview to build tailored pitch decks. It captures target audience goals, current pain points, core KPIs, and technical stack layers to instantly assemble a persuasive narrative structure, such as a Tell-Show-Tell or POV presentation.`,
+    url: 'https://sassysolutions-interactiveprez-ec40690dc476.rose-virginia.herokuapp.com/'
   },
   // ------- Holodecks -------
   {
