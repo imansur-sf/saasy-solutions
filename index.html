@@ -31,6 +31,7 @@
     <nav class="site-nav" aria-label="Primary">
       <a href="#home" class="nav-link" data-section="home">Home</a>
       <a href="#tools" class="nav-link" data-section="tools">Tools</a>
+      <a href="#my-projects" class="nav-link" data-section="my-projects">My Projects</a>
       <a href="#about" class="nav-link" data-section="about">About</a>
     </nav>
   </header>
@@ -81,6 +82,26 @@
       </div>
     </section>
 
+    <section id="my-projects" class="section section-my-projects">
+      <div class="panel">
+        <h2 class="section-title">&#9884; My Projects</h2>
+        <p class="section-lede">Your in-progress work across the Generators, saved and ready to reopen.</p>
+
+        <div id="my-projects-signed-out" class="my-projects-signed-out">
+          <p class="section-lede my-projects-prompt">Sign in with your Salesforce email to see your saved projects.</p>
+          <button id="btn-my-projects-signin" class="pixel-btn">Sign In &raquo;</button>
+        </div>
+
+        <div id="my-projects-signed-in" class="my-projects-signed-in hidden">
+          <div class="my-projects-toolbar">
+            <span id="my-projects-email" class="my-projects-email"></span>
+            <button id="btn-my-projects-signout" class="pixel-btn pixel-btn-sm pixel-btn-ghost">Sign Out</button>
+          </div>
+          <div id="my-projects-grid" class="my-projects-grid"></div>
+        </div>
+      </div>
+    </section>
+
     <section id="about" class="section section-about">
       <div class="panel">
         <h2 class="section-title">&#9670; About the Sith Lord</h2>
@@ -104,6 +125,7 @@
   </footer>
 
   <script src="tools.js"></script>
+  <script src="https://sassysolutions-accounts-8215113235cf.aster-virginia.herokuapp.com/saasy-auth.js"></script>
   <script src="app.js"></script>
 </body>
 </html>
