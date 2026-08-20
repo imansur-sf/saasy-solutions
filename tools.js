@@ -94,21 +94,21 @@ How it works:
 • Real-Time Live Preview: A side-by-side interactive mock-up updates instantly as changes are made, showcasing exactly what the final consumer-facing loyalty experience will look like.
 
 Perfect for sales teams and SEs looking to assemble rapid, highly tailored client demonstrations.`,
-    url: 'https://sassysolutions-loyaltygen-7922fe2e6c27.azalea-virginia.herokuapp.com/'
+    url: 'https://sassysolutions-loyaltygen-7922fe2e6c27.azalea-virginia.herokuapp-internal.com/'
   },
   {
     category: 'generators',
     name: 'Unified Profile Generator',
     icon: '◆',
     desc: `The Unified Profile Generator is an interactive mockup tool designed to simulate a customized 360-degree customer view for Salesforce Data Cloud demonstrations. Users can instantly kick off the process by pasting a company's URL, allowing the built-in AI to automatically extract brand identity, logos, and color tokens. Alternatively, a 7-step configuration wizard provides complete control to manually refine the design, industry verticals, and custom customer data attributes. As you adjust these settings, a dynamic live preview panel updates in real time to display a highly realistic mock customer profile dashboard. This preview cleanly visualizes unified customer insights, including cross-platform membership data, engagement timelines, learning affinities, and predictive Einstein Recommendations.`,
-    url: 'http://sassysolutions-unified-pro-gen-09e8f3d71dc2.pear-virginia.herokuapp.com/'
+    url: 'http://sassysolutions-unified-pro-gen-09e8f3d71dc2.pear-virginia.herokuapp-internal.com/'
   },
   {
     category: 'generators',
     name: 'Interactive Customer Presentations',
     icon: '▶',
     desc: `This page features Interactive Customer Presentations, an AI-guided deck creation platform that walks sales and strategy teams through a structured 16-step interview to build tailored pitch decks. It captures target audience goals, current pain points, core KPIs, and technical stack layers to instantly assemble a persuasive narrative structure, such as a Tell-Show-Tell or POV presentation.`,
-    url: 'https://sassysolutions-interactiveprez-ec40690dc476.rose-virginia.herokuapp.com/'
+    url: 'https://sassysolutions-interactiveprez-ec40690dc476.rose-virginia.herokuapp-internal.com/'
   },
   // ------- Holodecks -------
   {

@@ -88,9 +88,9 @@
 
   // ------- My Projects -------
   const PROJECT_TOOLS = {
-    upg: { label: 'Unified Profile Generator', url: 'http://sassysolutions-unified-pro-gen-09e8f3d71dc2.pear-virginia.herokuapp.com/' },
-    lpg: { label: 'Loyalty Portal Generator', url: 'https://sassysolutions-loyaltygen-7922fe2e6c27.azalea-virginia.herokuapp.com/' },
-    icp: { label: 'Interactive Customer Presentations', url: 'https://sassysolutions-interactiveprez-ec40690dc476.rose-virginia.herokuapp.com/' }
+    upg: { label: 'Unified Profile Generator', url: 'http://sassysolutions-unified-pro-gen-09e8f3d71dc2.pear-virginia.herokuapp-internal.com/' },
+    lpg: { label: 'Loyalty Portal Generator', url: 'https://sassysolutions-loyaltygen-7922fe2e6c27.azalea-virginia.herokuapp-internal.com/' },
+    icp: { label: 'Interactive Customer Presentations', url: 'https://sassysolutions-interactiveprez-ec40690dc476.rose-virginia.herokuapp-internal.com/' }
   };
 
   function syncMyProjectsUI() {
