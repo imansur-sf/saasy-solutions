@@ -110,6 +110,13 @@ Perfect for sales teams and SEs looking to assemble rapid, highly tailored clien
     desc: `This page features Interactive Customer Presentations, an AI-guided deck creation platform that walks sales and strategy teams through a structured 16-step interview to build tailored pitch decks. It captures target audience goals, current pain points, core KPIs, and technical stack layers to instantly assemble a persuasive narrative structure, such as a Tell-Show-Tell or POV presentation.`,
     url: 'https://sassysolutions-interactiveprez-ec40690dc476.rose-virginia.herokuapp-internal.com/'
   },
+  {
+    category: 'generators',
+    name: '2-Way Experience Studio',
+    icon: '⇄',
+    desc: `The Two-Way Experience Studio is an interactive scenario builder designed to create, simulate, and present dynamic Salesforce messaging demos across SMS, RCS, and email channels. Users can manually configure or AI-generate custom conversation workflows, setting up specific routing behaviors and testing them using live, simulated channel previews. The tool allows presenters to demonstrate real-time two-way customer engagement, automated responses, and seamless marketing-to-agent handoffs.`,
+    url: 'https://saasysolutions-2way-generator-d5d5517bce22.holly-virginia.herokuapp-internal.com/'
+  },
   // ------- Holodecks -------
   {
     category: 'holodeck',
