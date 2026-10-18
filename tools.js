@@ -120,6 +120,13 @@ Perfect for sales teams and SEs looking to assemble rapid, highly tailored clien
   // ------- Holodecks -------
   {
     category: 'holodeck',
+    name: 'Tony Robbins - Dreamforce SIC',
+    icon: '🌀',
+    desc: `This deck outlines Tony Robbin's strategic partnership with Salesforce, detailing findings from recent workshops and proposing a unified customer profile through Data 360. It highlights three prioritized use cases to eliminate operational friction in speed to lead, churn prevention, and client engagement. Finally, it provides the roadmap and next steps for expansion to maximize customer lifetime value and growth.`,
+    url: 'https://docs.google.com/presentation/d/1GDOGSpuvy6selPbdz7Df5oySw1KlB7TQUIxB4efuqqw/edit?slide=id.g3fa8e5028c2_48_217#slide=id.g3fa8e5028c2_48_217'
+  },
+  {
+    category: 'holodeck',
     name: 'ISACA',
     icon: '🌀',
     desc: `This presentation outlines a future state vision for an association, ISACA, focusing on data-driven personalization to maximize member value and revenue. By unifying data across various platforms, Salesforce proposes to help ISACA achieve a "360-degree" customer view and deliver tailored experiences across multiple channels.
