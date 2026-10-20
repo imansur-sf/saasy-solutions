@@ -14,13 +14,12 @@
   gtag('config', 'G-P1VVG2CEET');
 </script>
 <link rel="icon" type="image/gif" href="assets/logo.gif" />
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&family=Wallpoet&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="styles.css" />
+<link rel="stylesheet" href="scroll.css" />
+<link rel="stylesheet" href="booth-story.css" />
 </head>
 <body>
-  <div class="scanlines"></div>
+  <div class="scanlines"></div><div class="scroll-hud"><span id="hud-stage">INTRO / SCROLL TO START</span><button type="button" id="motion-toggle" aria-pressed="false">MOTION ON</button></div><div class="scroll-progress" aria-hidden="true"></div>
 
   <header class="site-header">
     <div class="brand">
@@ -36,9 +35,9 @@
   </header>
 
   <main>
-    <section id="home" class="section section-home">
+    <section id="home" class="section section-home"><div class="intro-stage"><div class="intro-screen"><video src="assets/battle.mp4" autoplay muted loop playsinline aria-hidden="true" class="opening-video"></video></div><div class="start-prompt"><span>SCROLL TO START</span><div class="start-chevrons">⌄<br>⌄</div></div><div class="scene-label">STAGE 01 / THE DARK SIDE</div>
       <div class="panel panel-hero">
-        <video src="assets/battle.mp4" autoplay muted loop playsinline aria-hidden="true" class="hero-logo"></video>
+        <div class="video-dock" aria-hidden="true"></div>
         <h2 class="hero-title">
           <span class="hero-line">Come with me to the <span class="hero-accent dark-side">Dark Side</span> of the</span>
           <span class="hero-line hero-accent sf-force">(sales)Force</span>
@@ -48,7 +47,7 @@
           <a href="#tools" class="pixel-btn">Enter the Armory &raquo;</a>
           <a href="#about" class="pixel-btn pixel-btn-ghost">About the Sith Lord</a>
         </div>
-      </div>
+      </div></div>
     </section>
 
     <section id="tools" class="section section-tools">
@@ -81,12 +80,12 @@
       </div>
     </section>
 
-    <section id="about" class="section section-about">
+    <section id="about" class="section section-about"><div class="about-stage"><canvas class="booth-cutscene" aria-hidden="true"></canvas><div class="story-controls"><button type="button" id="story-replay">Replay scene</button><button type="button" id="story-skip">Skip scene ↓</button></div><p class="story-caption" aria-live="polite"></p>
       <div class="panel">
         <h2 class="section-title">&#9670; About the Sith Lord</h2>
         <div class="about-content">
-          <img src="assets/Sithran.png" alt="" class="about-avatar" aria-hidden="true" />
-          <div class="about-text">
+          <div class="character-frame"><img class="civilian-portrait" src="assets/imran-civilian-photo.jpg" alt="Imran Mansur wearing a green jacket before his pixel transformation" /><img src="assets/Sithran.png" alt="" class="about-avatar" aria-hidden="true" /><div class="portrait-scan" aria-hidden="true"></div><span class="character-status" aria-hidden="true">PROFILE LOADED</span></div>
+          <div class="about-text"><span class="terminal-cursor" aria-hidden="true"></span>
             <p>Imran Mansur, also known to some as Slim, Vape Genie, or the guy that&rsquo;s always got a case of the Mondays, is a Lead Account Solutions Engineer that currently supports CBS CMCL under James Kelsall. Having been a Salesforce employee for <span id="sf-tenure-days" class="tenure-count">&hellip;</span> days, he&rsquo;s kissed alot of frogs, serving in various battle stations such as SDR, Core AE, Core SE, and Digital SE. When he&rsquo;s not being sassy, Imran likes to hang out with his ragdoll kitten, Willow, teaching her tricks such as sign language commands to sit, shake, and get him a glass of wine (still working on that last one).</p>
             <p class="about-links">
               <a href="https://github.com/imansur-sf" target="_blank" rel="noopener" class="pixel-btn pixel-btn-sm">GitHub</a>
@@ -95,7 +94,7 @@
             </p>
           </div>
         </div>
-      </div>
+      </div></div>
     </section>
   </main>
 
@@ -105,5 +104,7 @@
 
   <script src="tools.js"></script>
   <script src="app.js"></script>
+  <script src="scroll.js"></script>
+  <script src="booth-story.js"></script>
 </body>
 </html>

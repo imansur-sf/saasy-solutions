@@ -2,6 +2,14 @@
 
 Last updated: 2026-08-08. **Read this first.** No PROGRESS.md exists yet for this repo — `git log` is the history; this file is current state + what's left.
 
+## Approved scroll experience (2026-10-20)
+
+The production site now includes the approved scroll prototype. `scroll.css` and `scroll.js` handle the full-screen battle intro docking into the hero, stepped section reveals, pixel materialization of Armory cards, and the motion toggle. `booth-story.css` and `booth-story.js` handle the pinned About cutscene: original green-jacket photo → pixelation → civilian sprite steps out → phone booth → explosion → Sith sprite walks back into the portrait → bio and profile links unlock. Replay resets the scroll position; Skip advances to the finished profile. Reduced motion presents the finished profile without the cutscene.
+
+New assets are `assets/imran-civilian-photo.jpg`, `assets/imran-walk-sprites.png`, and the bundled fonts with their OFL license files in `fonts/`. The original photo remains unedited. Analytics and existing catalog links are preserved. The experimental concept gallery and recording files are outside this repository and are not deployed.
+
+Validation: JavaScript syntax and diff checks; headless Chrome desktop (1440px) and mobile (390px) checks of the transformation stages, completed profile links, replay, skip, category filtering, horizontal overflow, and reduced-motion fallback. All passed before publishing.
+
 ## Where we are
 
 - **Working directory**: `/Users/imansur/claude/saasy-solutions`.
