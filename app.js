@@ -3,7 +3,9 @@
     meshmesh: 'MeshMesh',
     slackbot: 'Slack Skill',
     generators: 'Generator',
-    holodeck: 'Holodeck'
+    holodeck: 'Holodeck',
+    claude: 'Claude Skills',
+    workshops: 'Workshops'
   };
 
   function renderTools(filter) {

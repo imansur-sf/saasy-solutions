@@ -1,12 +1,30 @@
 // SaaSy Solutions — tool catalog.
 // Edit this file to add / update / remove tools. Each entry:
-//   category: 'meshmesh' | 'slackbot' | 'github'
+//   category: 'meshmesh' | 'slackbot' | 'generators' | 'holodeck' | 'claude' | 'workshops'
 //   name:     display name
 //   icon:     single character or emoji (kept short — renders large)
 //   desc:     short description (1-2 sentences)
 //   url:      link users click; use '#' as a placeholder
 
 window.SAASY_TOOLS = [
+  // ------- Claude Skills -------
+  {
+    category: 'claude',
+    name: 'SaaScity',
+    icon: '✦',
+    desc: "SaaScity is a Claude skill for Salesforce SEs & easy enough for AEs. Give it a customer and it builds an interactive page of that customer's world and their customer's lifecycle, with Salesforce use cases sitting where they happen in the business. This canvas covers what it does, what you get, how to use it, example outputs, where to host the result, and if you're curious, how it works under the hood.",
+    url: 'https://salesforce.enterprise.slack.com/docs/TECBHJS2W/F0CBZ4B518R'
+  },
+
+  // ------- Workshops -------
+  {
+    category: 'workshops',
+    name: 'Use Case Studio',
+    icon: '⚒',
+    desc: 'UseCaseStudio is an interactive, facilitator-led discovery tool designed to capture and structure customer requirements during strategic workshops. It allows teams to visually map out business use cases by defining trigger conditions, target audiences, data sources, and internal or external activation channels in real time. By transforming live discussion into clear visual workflows and data structures, it helps streamline prioritization, alignment, and readback for key stakeholders.',
+    url: 'https://saasysolutions-usecasestudio-14e10f6cd094.cherry-virginia.herokuapp-internal.com/'
+  },
+
   // ------- MeshMesh -------
   {
     category: 'meshmesh',

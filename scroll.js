@@ -5,7 +5,7 @@ const reduce=matchMedia('(prefers-reduced-motion: reduce)');let disabled=reduce.
 function wipe(el,p){let points=['0 0','100% 0'];for(let i=10;i>=0;i--){const h=clamp(p*1.22-(i%3)*.065)*100;points.push((i*10)+'% '+h+'%',Math.max(0,i*10-10)+'% '+h+'%')}points.push('0 0');el.style.clipPath=p>=.999?'none':'polygon('+points.join(',')+')'}
 
 const pixelFields=new WeakMap();
-function pixelResolve(el,p,index){
+function pixelResolve(el,p,index,subtle=false){
   let field=pixelFields.get(el);
   if(!field){const canvas=document.createElement('canvas');canvas.className='pixel-resolve';canvas.setAttribute('aria-hidden','true');el.append(canvas);field={canvas,ctx:canvas.getContext('2d'),width:0,height:0,last:-1};pixelFields.set(el,field)}
   const width=el.offsetWidth+24,height=el.offsetHeight+24;
@@ -15,6 +15,15 @@ function pixelResolve(el,p,index){
   const ctx=field.ctx;ctx.clearRect(0,0,width,height);
   if(disabled||p<=0||p>=1){field.canvas.hidden=true;return}field.canvas.hidden=false;
   const seed=(x,y)=>{const n=Math.sin(x*127.1+y*311.7+index*19.3)*43758.5453;return n-Math.floor(n)};
+  if(subtle){
+    // Sparse edge pixels never cover the card's title, description, or button.
+    ctx.globalAlpha=.25*(1-p);
+    for(let i=0;i<18;i++){
+      const side=i%4,rand=seed(i,55),x=side<2?(side?width-17:13):13+rand*(width-26),y=side>=2?(side===2?13:height-17):13+rand*(height-26);
+      ctx.fillStyle=i%3?'#ff6b1a':'#ffcc4a';ctx.fillRect(Math.round(x),Math.round(y),3,3);
+    }
+    ctx.globalAlpha=1;return;
+  }
   const size=18,cols=Math.ceil((width-24)/size),rows=Math.ceil((height-24)/size);
   ctx.imageSmoothingEnabled=false;
   for(let row=0;row<rows;row++)for(let col=0;col<cols;col++){
@@ -47,10 +56,38 @@ function characterReveal(){
   [...links.querySelectorAll('a')].forEach((a,i)=>{const q=entry(links,45+i*45,225+i*45),offset=Math.round((1-q)*36/4)*4;a.style.transform='translateY('+offset+'px) scale('+(0.94+.06*q)+')';a.style.opacity=q;a.inert=q<.90;a.classList.toggle('socket-lock',q>.82&&q<.99);pixelResolve(a,q,80+i)});
 }
 
-function reveal(){document.querySelectorAll('#tools>.panel').forEach(el=>{let r=el.getBoundingClientRect(),p=ease(range(innerHeight-r.top,40,innerHeight*.62));if(disabled)p=1;el.style.opacity=String(clamp(p*2));el.style.transform='translateY('+((1-p)*72)+'px) scale('+(0.94+p*.06)+')';wipe(el,p)});document.querySelectorAll('.tool-card').forEach((el,i)=>{let r=el.getBoundingClientRect(),p=ease(range(innerHeight-r.top,-20+(i%3)*18,480+(i%3)*18));if(disabled)p=1;let shift=Math.round((1-p)*40/4)*4;el.style.opacity=String(p);el.style.transform=p===1?'':'translate('+((i%3-1)*shift)+'px,'+shift+'px) scale('+(0.94+p*.06)+')';el.style.clipPath='none';pixelResolve(el,p,i)});characterReveal();}
+// Track progress once per element: scrolling back never obscures finished content.
+const armoryProgress=new WeakMap();
+function armoryEntry(el,distance){
+  let top=0;for(let node=el;node;node=node.offsetParent)top+=node.offsetTop;
+  const p=disabled||el.contains(document.activeElement)?1:ease(range(scrollY+innerHeight-top,0,distance));
+  const next=Math.max(armoryProgress.get(el)||0,p);armoryProgress.set(el,next);return next;
+}
+function reveal(){
+  document.querySelectorAll('#tools>.panel').forEach(el=>{
+    const p=armoryEntry(el,120);
+    el.style.opacity=String(.8+.2*p);
+    el.style.transform=p===1?'':'translateY('+((1-p)*16)+'px)';
+    el.style.clipPath='none';
+  });
+  document.querySelectorAll('.tool-card').forEach((el,i)=>{
+    const p=armoryEntry(el,Math.min(180,innerHeight*.24)),remaining=1-p,variant=i%4;
+    let x=0,y=0;
+    if(variant===0)y=remaining*12;
+    else if(variant===1)x=-remaining*24;
+    else if(variant===2)y=-remaining*20;
+    else x=remaining*24;
+    el.dataset.entrance=['pixel','slide-left','drop','slide-right'][variant];
+    el.style.opacity=String(.72+.28*p);
+    el.style.transform=p===1?'':'translate('+x+'px,'+y+'px)';
+    el.style.clipPath='none';
+    if(variant===0)pixelResolve(el,p,i,true);
+  });
+  characterReveal();
+}
 function hMarker(p){return !disabled&&p<.75}
 function draw(){pending=false;let y=scrollY,vh=innerHeight,vw=innerWidth,p=disabled?1:clamp(y/(home.offsetHeight-vh)),z=ease(range(p,.04,.74));let r=dock.getBoundingClientRect(),sr=stage.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top-sr.top+r.height/2,s=r.width/vw,clip=Math.max(0,(vh-r.height/s)/2);const cover=Math.max(vh/(vw*9/16),vw/(vh*16/9));$('.opening-video').style.transform='scale('+(cover+(1-cover)*z)+')';header.inert=hMarker(p);screen.style.transform='translate('+((cx-vw/2)*z)+'px,'+((cy-vh/2)*z)+'px) scale('+(1+(s-1)*z)+')';screen.style.clipPath='inset('+(clip*z)+'px 0 '+(clip*z)+'px 0)';let h=ease(range(p,.5,.82));header.style.opacity=String(h);header.style.transform='translateY('+(-145*(1-h))+'px)';header.style.pointerEvents=h>.8?'auto':'none';panel.style.opacity=String(ease(range(p,.35,.76)));panel.style.transform='translateY('+((1-h)*30)+'px) scale('+(0.96+.04*h)+')';let elements=[$('.hero-title'),$('.hero-subtitle'),$('.hero-actions')];elements.forEach((el,i)=>{let q=disabled?1:ease(range(p,.60+i*.055,.81+i*.055));el.style.opacity=q;el.style.transform='translateY('+(Math.round((1-q)*32/4)*4)+'px)';wipe(el,q)});prompt.style.opacity=String(1-range(p,.04,.24));label.style.opacity=String(1-range(p,.65,.88));let total=Math.max(1,document.documentElement.scrollHeight-vh);progress.style.transform='scaleX('+clamp(y/total)+')';hud.textContent=p<.75?'STAGE 01 / ENTER THE DARK SIDE':y<home.offsetHeight-100?'STAGE 01 / ASSEMBLY OF THE LEGION':$('#about').getBoundingClientRect().top<vh*.7?'STAGE 03 / THE SITH LORD':'STAGE 02 / EQUIP YOUR DARK SABER & ARSENAL';reveal();}
 function schedule(){if(!pending){pending=true;requestAnimationFrame(draw)}}
 function toggle(v){disabled=v;document.body.classList.toggle('no-motion',v);$('#motion-toggle').setAttribute('aria-pressed',v);$('#motion-toggle').textContent=v?'MOTION OFF':'MOTION ON';if(v&&!dock.querySelector('video')){let copy=$('.opening-video').cloneNode(true);copy.removeAttribute('autoplay');copy.controls=true;copy.removeAttribute('aria-hidden');dock.removeAttribute('aria-hidden');dock.append(copy)}draw()}
-$('#motion-toggle').onclick=()=>toggle(!disabled);reduce.onchange=e=>toggle(e.matches);window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);new MutationObserver(schedule).observe($('#tool-grid'),{childList:true});window.renderScroll=draw;window.addEventListener('load',()=>{toggle(disabled);draw()});draw();
+$('#motion-toggle').onclick=()=>toggle(!disabled);reduce.onchange=e=>toggle(e.matches);window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);$('#tool-grid').addEventListener('focusin',schedule);new MutationObserver(schedule).observe($('#tool-grid'),{childList:true});window.renderScroll=draw;window.addEventListener('load',()=>{toggle(disabled);draw()});draw();
 })();

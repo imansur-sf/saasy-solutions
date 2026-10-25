@@ -469,6 +469,8 @@ main {
 .tool-badge.slackbot { background: var(--torch-yellow); }
 .tool-badge.generators { background: var(--parchment); }
 .tool-badge.holodeck { background: #9b59b6; color: #fff; }
+.tool-badge.claude { background: #d99a78; color: #171920; }
+.tool-badge.workshops { background: #78c5b7; color: #171920; }
 
 .tool-icon {
   font-size: 2rem;
