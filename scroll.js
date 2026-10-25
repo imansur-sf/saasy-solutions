@@ -17,10 +17,10 @@ function pixelResolve(el,p,index,subtle=false){
   const seed=(x,y)=>{const n=Math.sin(x*127.1+y*311.7+index*19.3)*43758.5453;return n-Math.floor(n)};
   if(subtle){
     // Sparse edge pixels never cover the card's title, description, or button.
-    ctx.globalAlpha=.25*(1-p);
-    for(let i=0;i<18;i++){
+    ctx.globalAlpha=.65*(1-p);
+    for(let i=0;i<36;i++){
       const side=i%4,rand=seed(i,55),x=side<2?(side?width-17:13):13+rand*(width-26),y=side>=2?(side===2?13:height-17):13+rand*(height-26);
-      ctx.fillStyle=i%3?'#ff6b1a':'#ffcc4a';ctx.fillRect(Math.round(x),Math.round(y),3,3);
+      ctx.fillStyle=i%3?'#ff6b1a':'#ffcc4a';ctx.fillRect(Math.round(x),Math.round(y),5,5);
     }
     ctx.globalAlpha=1;return;
   }
@@ -58,6 +58,7 @@ function characterReveal(){
 
 // Track progress once per element: scrolling back never obscures finished content.
 const armoryProgress=new WeakMap();
+let cardEntrances=new WeakMap();
 function armoryEntry(el,distance){
   let top=0;for(let node=el;node;node=node.offsetParent)top+=node.offsetTop;
   const p=disabled||el.contains(document.activeElement)?1:ease(range(scrollY+innerHeight-top,0,distance));
@@ -71,23 +72,33 @@ function reveal(){
     el.style.clipPath='none';
   });
   document.querySelectorAll('.tool-card').forEach((el,i)=>{
-    const p=armoryEntry(el,Math.min(180,innerHeight*.24)),remaining=1-p,variant=i%4;
-    let x=0,y=0;
-    if(variant===0)y=remaining*12;
-    else if(variant===1)x=-remaining*24;
-    else if(variant===2)y=-remaining*20;
-    else x=remaining*24;
+    let state=cardEntrances.get(el);
+    if(!state){state={start:null,done:false};cardEntrances.set(el,state)}
+    const now=performance.now(),variant=i%4;
+    let top=0;for(let node=el;node;node=node.offsetParent)top+=node.offsetTop;
+    if(disabled||el.contains(document.activeElement))state.done=true;
+    // Start after the card clears the bottom HUD, then finish even if scrolling stops.
+    if(!state.done&&state.start===null&&top-scrollY<innerHeight-96)state.start=now+(i%3)*60;
+    const elapsed=state.start===null?0:range(now-state.start,0,660);
+    if(elapsed===1)state.done=true;
+    const p=state.done?1:ease(elapsed),remaining=1-p;
+    let x=0,y=0,rotation=0;
+    if(variant===0)y=remaining*36;
+    else if(variant===1){x=-remaining*84;rotation=-remaining*2;}
+    else if(variant===2){y=-remaining*64;rotation=remaining*2;}
+    else{x=remaining*84;rotation=remaining*2;}
     el.dataset.entrance=['pixel','slide-left','drop','slide-right'][variant];
-    el.style.opacity=String(.72+.28*p);
-    el.style.transform=p===1?'':'translate('+x+'px,'+y+'px)';
+    el.style.opacity=String(.82+.18*p);
+    el.style.transform=p===1?'':'translate('+x+'px,'+y+'px) rotate('+rotation+'deg)';
     el.style.clipPath='none';
     if(variant===0)pixelResolve(el,p,i,true);
+    if(state.start!==null&&!state.done)schedule();
   });
   characterReveal();
 }
 function hMarker(p){return !disabled&&p<.75}
 function draw(){pending=false;let y=scrollY,vh=innerHeight,vw=innerWidth,p=disabled?1:clamp(y/(home.offsetHeight-vh)),z=ease(range(p,.04,.74));let r=dock.getBoundingClientRect(),sr=stage.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top-sr.top+r.height/2,s=r.width/vw,clip=Math.max(0,(vh-r.height/s)/2);const cover=Math.max(vh/(vw*9/16),vw/(vh*16/9));$('.opening-video').style.transform='scale('+(cover+(1-cover)*z)+')';header.inert=hMarker(p);screen.style.transform='translate('+((cx-vw/2)*z)+'px,'+((cy-vh/2)*z)+'px) scale('+(1+(s-1)*z)+')';screen.style.clipPath='inset('+(clip*z)+'px 0 '+(clip*z)+'px 0)';let h=ease(range(p,.5,.82));header.style.opacity=String(h);header.style.transform='translateY('+(-145*(1-h))+'px)';header.style.pointerEvents=h>.8?'auto':'none';panel.style.opacity=String(ease(range(p,.35,.76)));panel.style.transform='translateY('+((1-h)*30)+'px) scale('+(0.96+.04*h)+')';let elements=[$('.hero-title'),$('.hero-subtitle'),$('.hero-actions')];elements.forEach((el,i)=>{let q=disabled?1:ease(range(p,.60+i*.055,.81+i*.055));el.style.opacity=q;el.style.transform='translateY('+(Math.round((1-q)*32/4)*4)+'px)';wipe(el,q)});prompt.style.opacity=String(1-range(p,.04,.24));label.style.opacity=String(1-range(p,.65,.88));let total=Math.max(1,document.documentElement.scrollHeight-vh);progress.style.transform='scaleX('+clamp(y/total)+')';hud.textContent=p<.75?'STAGE 01 / ENTER THE DARK SIDE':y<home.offsetHeight-100?'STAGE 01 / ASSEMBLY OF THE LEGION':$('#about').getBoundingClientRect().top<vh*.7?'STAGE 03 / THE SITH LORD':'STAGE 02 / EQUIP YOUR DARK SABER & ARSENAL';reveal();}
 function schedule(){if(!pending){pending=true;requestAnimationFrame(draw)}}
-function toggle(v){disabled=v;document.body.classList.toggle('no-motion',v);$('#motion-toggle').setAttribute('aria-pressed',v);$('#motion-toggle').textContent=v?'MOTION OFF':'MOTION ON';if(v&&!dock.querySelector('video')){let copy=$('.opening-video').cloneNode(true);copy.removeAttribute('autoplay');copy.controls=true;copy.removeAttribute('aria-hidden');dock.removeAttribute('aria-hidden');dock.append(copy)}draw()}
+function toggle(v){if(disabled&&!v)cardEntrances=new WeakMap();disabled=v;document.body.classList.toggle('no-motion',v);$('#motion-toggle').setAttribute('aria-pressed',v);$('#motion-toggle').textContent=v?'MOTION OFF':'MOTION ON';if(v&&!dock.querySelector('video')){let copy=$('.opening-video').cloneNode(true);copy.removeAttribute('autoplay');copy.controls=true;copy.removeAttribute('aria-hidden');dock.removeAttribute('aria-hidden');dock.append(copy)}draw()}
 $('#motion-toggle').onclick=()=>toggle(!disabled);reduce.onchange=e=>toggle(e.matches);window.addEventListener('scroll',schedule,{passive:true});window.addEventListener('resize',schedule);$('#tool-grid').addEventListener('focusin',schedule);new MutationObserver(schedule).observe($('#tool-grid'),{childList:true});window.renderScroll=draw;window.addEventListener('load',()=>{toggle(disabled);draw()});draw();
 })();
